@@ -1,0 +1,34 @@
+###get method
+GET http://localhost:8000/api/v2/task
+
+###post method
+POST  http://localhost:8000/api/v2/task
+Content-Type: application/json
+
+{
+    "task": "Working",
+    "hr": 25
+}
+
+###update method
+PATCH  http://localhost:8000/api/v2/task
+Content-Type: application/json
+
+{
+    "_id": "653f1b4cc8dfc684e6df1e15",
+    "type": "bad"
+}
+
+###delete method
+DELETE  http://localhost:8000/api/v2/task/65403c3a3e811d301a25fbb1
+
+###delete method
+DELETE  http://localhost:8000/api/v2/task
+Content-Type: application/json
+
+{
+    "ids": [
+        "653f1db8617e69a05f1c38e9",
+        "653f1db8617e69a05f1c38e9"
+    ]
+}
