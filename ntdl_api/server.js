@@ -1,13 +1,22 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import express from 'express';
 import { connectMongo } from './src/config/dbConfig.js';
 import { deleteManyTask, deleteTask, getAllTask, insertTask, switchTask } from './src/model/TaskModel.js';
 import cors from 'cors';
 
-
 const app = express();
 const PORT = 8000;
 
+
+//setup static content serve
+import path from 'path';
+
+const __dirname = path.resolve();
+console.log(__dirname);
+app.use(express.static(path.join(__dirname, "build")))
 app.use(express.json());
+console.log(process.env.MONGO_URL)
 
 connectMongo();
 app.use(cors());
@@ -86,9 +95,7 @@ app.delete("/api/v2/task/", async(req, res) => {
  })
 
 app.get("/", (req, res) => {
-    res.json({
-        message: "Server is running normally"
-    })
+    res.sendFile(path.join(__dirname , "/index.html"))
 })
 
 app.listen(PORT, (error) =>{
