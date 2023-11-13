@@ -6,7 +6,7 @@ import { deleteManyTask, deleteTask, getAllTask, insertTask, switchTask } from '
 import cors from 'cors';
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 
 //setup static content serve
